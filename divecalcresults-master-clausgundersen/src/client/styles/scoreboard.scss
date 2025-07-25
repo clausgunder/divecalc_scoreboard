@@ -1,0 +1,424 @@
+// src/client/styles/scoreboard.scss
+@use "sass:color";
+
+// Variables
+$primary-color: #333;
+$secondary-color: #4682B4;
+$background-color: #f8f8f8;
+$border-color: #ddd;
+$header-bg: #2c3e50;
+$header-text: #ecf0f1;
+$footer-bg: #34495e;
+$footer-text: #ecf0f1;
+
+// Global styles
+body {
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    color: $primary-color;
+    background-color: $background-color;
+}
+
+// Common elements
+.standingsHeader, .standingsFooter {
+    color: $header-text;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.standingsHeader {
+    background-color: $header-bg;
+
+    .competition {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        margin-top: 5px;
+    }
+}
+
+.standingsFooter {
+    background-color: $footer-bg;
+    text-align: center;
+    padding: 8px;
+}
+
+// Scoreboard specific styles
+.standings {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+
+    .resultline {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid $border-color;
+        font-size: 1.2rem;
+
+        &:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .position {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .name {
+            flex: 1;
+            text-transform: capitalize;
+        }
+
+        .points, .role {
+            width: 100px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .flag {
+            width: 30px;
+            height: 20px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+    }
+
+    .spacer {
+        flex: 1;
+    }
+}
+
+// Dive and awards views
+.dive, .awards {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .header {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background-color: $header-bg;
+        color: $header-text;
+
+        .position {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .name {
+            font-size: 2rem;
+            text-transform: capitalize;
+        }
+    }
+
+    .data {
+        display: flex;
+        padding: 15px;
+        border-bottom: 1px solid $border-color;
+
+        .item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            div {
+                margin: 5px 0;
+
+                &:first-child {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .judgeAwards {
+        display: flex;
+        justify-content: space-around;
+
+        .judgeAward {
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+        }
+    }
+}
+
+// Diver panel for bigscreen
+.diver {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.05);
+
+    .position {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-right: 20px;
+    }
+
+    .name {
+        flex: 1;
+        font-size: 1.8rem;
+        text-transform: capitalize;
+    }
+
+    .round {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+
+    .bsdive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .code {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .dd {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+// Whiteline for scores and awards
+.whiteline {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: white;
+    border-top: 1px solid $border-color;
+
+    &.awardline {
+        font-size: 1.5rem;
+        font-weight: bold;
+
+        .divename {
+            flex: 1;
+            text-align: center;
+        }
+
+        .result {
+            font-size: 2.5rem;
+            padding: 0 20px;
+        }
+    }
+}
+
+// Bigscreen layout
+.bigscreen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+        flex: 1;
+    }
+
+    // When there are two competitions
+    &:has(div:nth-child(2)) {
+        & > div {
+            height: 50%;
+            max-height: 50vh;
+        }
+    }
+}
+
+// Infoscreen
+.infoScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    h1 {
+        font-size: 6rem;
+        margin: 20px 0;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1.5rem;
+        background-color: $secondary-color;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: color.adjust($secondary-color, $lightness: -10%);
+        }
+    }
+}
+
+// Commercial
+.commercial {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    img {
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+
+    &.fadeOut {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+// Controls
+.controls {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+        margin-top: 30px;
+        border-bottom: 2px solid $secondary-color;
+        padding-bottom: 10px;
+    }
+
+    .commercial-control {
+        margin-bottom: 30px;
+
+        button {
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .controls-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .control {
+        background-color: white;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+            margin: 0;
+        }
+    }
+
+    button {
+        padding: 8px 16px;
+        background-color: $secondary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: color.adjust($secondary-color, $lightness: -10%);
+        }
+
+        &.danger {
+            background-color: #e74c3c;
+
+            &:hover {
+                background-color: color.adjust(#e74c3c, $lightness: -10%);
+            }
+        }
+    }
+}
+
+// Media queries for responsive design
+@media (max-width: 768px) {
+    .resultline {
+        .position {
+            width: 30px;
+            height: 30px;
+        }
+
+        .name {
+            font-size: 1rem;
+        }
+
+        .points, .role {
+            width: 70px;
+            font-size: 0.9rem;
+        }
+    }
+
+    .dive, .awards {
+        .header {
+            .position {
+                width: 40px;
+                height: 40px;
+            }
+
+            .name {
+                font-size: 1.5rem;
+            }
+        }
+
+        .judgeAwards {
+            .judgeAward {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .infoScreen {
+        h1 {
+            font-size: 4rem;
+        }
+    }
+}

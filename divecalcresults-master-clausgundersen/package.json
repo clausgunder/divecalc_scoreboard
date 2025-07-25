@@ -1,0 +1,30 @@
+{
+  "name": "divecalc-scoreboard",
+  "version": "2.0.0",
+  "description": "Modernized Diving Competition Scoreboard",
+  "main": "src/server/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "vite",
+    "dev:server": "nodemon --exec node src/server/index.js",
+    "build": "vite build",
+    "test-data": "echo 'Sending test data to server...' && echo 'test' | nc localhost 9090 && echo 'Test data sent! Check your browser at http://localhost:9001'"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "koa": "^2.16.1",
+    "koa-bodyparser": "^4.4.1",
+    "koa-static": "^5.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "vite": "^6.2.5"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "sass-embedded": "^1.86.3"
+  }
+}

@@ -1,0 +1,135 @@
+$outer-padding: 20px;
+$inner-padding: 10px;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: magenta;
+    font-size: 18px;
+    font-family: roboto;
+}
+
+        .position {
+            display: inline-block;
+            background: rgb(251, 197, 037);
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+.standings {
+    -webkit-app-region: drag;
+    width: 70vw;
+    position: absolute;
+    left: 15vw;
+    bottom: 5vh;
+    .standingsHeader {
+        background: linear-gradient(to right, rgb(115, 173, 193), rgb(184, 213, 224));
+        padding: 10px 20px;
+        color: white;
+        .competition{
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        .description{
+            font-size: 1.1em;
+        }
+    }
+    .standingsFooter{
+        background: linear-gradient(to right, rgb(115, 173, 193), rgb(184, 213, 224));
+        padding: 4px 20px;
+        color: white;
+        margin-top: 4px;
+    }
+    .resultline {
+        background: white;
+        padding: 0 20px;
+        margin-top: 4px;
+        display: flex;
+        height: 30px;
+        align-items: center;
+        .name{
+            flex: 1;
+        }
+    }
+}
+
+.dive,
+.awards {
+    -webkit-app-region: drag;
+    width: 80vw;
+    margin: 0 10vw;
+    position: absolute;
+    bottom: 5vh;
+    .header {
+        font-size: 1.1em;
+        background: white;
+        padding: 0 $outer-padding;
+        .position {
+            margin-right: $inner-padding;
+        }
+    }
+    .data {
+        display: flex;
+        flex-wrap: wrap;
+        .item {
+            background: white;
+            margin-top: 4px;
+            padding: 4px $outer-padding 4px $inner-padding;
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            &:nth-child(odd) {
+                padding: 4px $inner-padding 4px $outer-padding;
+                width: calc(50% - 4px);
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.awards .data {
+    .item {
+        justify-content: space-around;
+    }
+    &.judgeAwards {
+        margin-top: 4px;
+        background: white;
+        padding: 4px 0;
+        justify-content: space-around;
+    }
+}
+
+.lower-third {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+
+    .diver-name {
+        font-size: 1.8rem;
+        flex: 1;
+    }
+
+    .diver-score {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0 20px;
+    }
+
+    .flag {
+        width: 60px;
+        height: 40px;
+        object-fit: contain;
+    }
+}

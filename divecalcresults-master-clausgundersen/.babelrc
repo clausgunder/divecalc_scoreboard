@@ -1,0 +1,6 @@
+{
+  "presets": ["latest"],
+  "plugins": ["transform-react-jsx"],
+  "sourceMaps": true,
+  "retainLines": true
+}
